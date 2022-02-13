@@ -17,34 +17,13 @@ import axios from 'axios';
 
 const {width: ScreenWidth} = Dimensions.get('screen');
 
-export const List = ({navigation}) => {
+export const Customize = ({navigation}) => {
   const [data, setData] = useState([]);
   const authStatus = useSelector(state => state.authStore.authStatus);
   console.log('authStatus-splash', authStatus);
   const dispatch = useDispatch();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
-  useEffect(() => {
-    dataFetcher();
-  }, []);
-
-  const dataFetcher = () => {
-    axios
-      .get(
-        'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=coffee',
-        {},
-      )
-      .then(
-        response => {
-          console.log(JSON.stringify(response));
-          setData(response?.data?.drinks ?? []);
-        },
-        error => {
-          console.log(error);
-        },
-      );
-  };
 
   const Header = () => {
     return (
@@ -67,7 +46,7 @@ export const List = ({navigation}) => {
             alignItems: 'center',
             justifyContent: 'center',
           }}>
-          <Text style={{color: '#8C746A', fontSize: 24}}>Menu</Text>
+          <Text style={{color: '#8C746A', fontSize: 24}}>Preferences</Text>
         </View>
       </View>
     );
@@ -80,36 +59,6 @@ export const List = ({navigation}) => {
         marginTop: 32,
       }}>
       {Header()}
-      <ScrollView>
-        <View style={{flex: 1, paddingHorizontal: 32, marginTop: 32}}>
-          {data.map(item => {
-            return (
-              <View
-                key={item.idDrink}
-                style={{
-                  flexDirection: 'row',
-                  justifyContent: 'space-between',
-                  marginBottom: 8,
-                }}>
-                <Image
-                  style={{width: 50, height: 50}}
-                  resizeMode="contain"
-                  source={{uri: item?.strDrinkThumb}}></Image>
-                <View
-                  style={{
-                    flex: 1,
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                  }}>
-                  <Text style={{color: '#8C746A', fontSize: 14}}>
-                    {item?.strDrink}
-                  </Text>
-                </View>
-              </View>
-            );
-          })}
-        </View>
-      </ScrollView>
     </View>
   );
 };

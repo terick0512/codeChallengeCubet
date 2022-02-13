@@ -14,7 +14,7 @@ export const Splash = ({navigation}) => {
 
   useEffect(() => {
     timerFunction();
-  }, []);
+  }, [authStatus]);
 
   const timerFunction = () => {
     setTimeout(() => {
