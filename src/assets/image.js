@@ -8,5 +8,8 @@ const Img = {
   back: require('./icons/back.png'),
   lbtn: require('./icons/lbtn.png'),
   map: require('./icons/map.png'),
+  locname: require('./icons/locname.png'),
+  address: require('./icons/address.png'),
+  continue: require('./icons/continue.png'),
 };
 export default Img;

@@ -11,7 +11,11 @@ import Img from '../../assets/image';
 import Confirmation from './confirmation';
 export const ChooseMachine = ({navigation}) => {
   const authStatus = useSelector(state => state.authStore.authStatus);
-  console.log('authStatus-splash', authStatus);
+
+  const navigator = () => {
+    navigation.navigate('List');
+  };
+
   return (
     <ImageBackground
       source={Img.map}
@@ -20,7 +24,7 @@ export const ChooseMachine = ({navigation}) => {
         backgroundColor: '#ffffff',
       }}
       imageStyle={{height: '100%', width: '100%'}}>
-      <Confirmation></Confirmation>
+      <Confirmation navigator={navigator}></Confirmation>
     </ImageBackground>
   );
 };

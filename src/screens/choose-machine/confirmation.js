@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
-import {Text, View, TouchableOpacity, ScrollView} from 'react-native';
+import {Text, View, TouchableOpacity, ScrollView, Image} from 'react-native';
 import {connect} from 'react-redux';
+import Img from '../../assets/image';
 
 class Confirmation extends Component {
   constructor(props) {
@@ -29,7 +30,35 @@ class Confirmation extends Component {
             backgroundColor: '#ffffff',
             padding: 16,
             paddingBottom: 24,
-          }}></View>
+          }}>
+          <View>
+            <Image
+              style={{}}
+              resizeMode={'contain'}
+              source={Img.locname}></Image>
+          </View>
+          <TouchableOpacity
+            onPress={() => {
+              this.props.navigator();
+            }}
+            style={{
+              alignItems: 'center',
+              marginTop: 16,
+              borderRadius: 12,
+              marginTop: 32,
+            }}>
+            <Image
+              style={{}}
+              resizeMode={'contain'}
+              source={Img.continue}></Image>
+          </TouchableOpacity>
+          <View style={{marginTop: 32}}>
+            <Image
+              style={{}}
+              resizeMode={'contain'}
+              source={Img.address}></Image>
+          </View>
+        </View>
       </View>
     );
   }

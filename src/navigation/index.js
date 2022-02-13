@@ -8,6 +8,7 @@ import {Splash} from '../screens/splash';
 import {Dashboard} from '../screens/onboard';
 import {Login} from '../screens/login';
 import {ChooseMachine} from '../screens/choose-machine';
+import {List} from '../screens/select-drink';
 
 const Stack = createStackNavigator();
 
@@ -19,6 +20,7 @@ function Navigator() {
         <Stack.Screen name="Dashboard" component={Dashboard} />
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="ChooseMachine" component={ChooseMachine} />
+        <Stack.Screen name="List" component={List} />
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -67,18 +67,17 @@ export const Login = ({navigation}) => {
       style={{
         flex: 1,
         marginTop: 32,
-        padding: 32,
       }}>
       {Header()}
       <View style={{marginTop: 48, alignItems: 'center'}}>
         <Text style={{color: '#8C746A', fontSize: 32}}>Welcome back!</Text>
       </View>
-      <View style={{marginTop: 32}}>
+      <View style={{marginTop: 32, alignItems: 'center'}}>
         <InteractiveTextInput
           placeholder="Email"
           secureTextEntry={false}
           enableIcon
-          textInputStyle={{width: ScreenWidth * 0.7}}
+          textInputStyle={{width: ScreenWidth * 0.9}}
           //   iconImageSource={require('./assets/visibility-button.png')}
           onIconPress={() => {}}
           onTextInput={text => {
@@ -86,12 +85,12 @@ export const Login = ({navigation}) => {
           }}
         />
       </View>
-      <View style={{marginTop: 32}}>
+      <View style={{marginTop: 32, alignItems: 'center'}}>
         <InteractiveTextInput
           placeholder="Password"
           secureTextEntry
           enableIcon
-          textInputStyle={{width: ScreenWidth * 0.7}}
+          textInputStyle={{width: ScreenWidth * 0.9}}
           //   iconImageSource={require('./assets/visibility-button.png')}
           onIconPress={() => {}}
           onTextInput={text => {
@@ -103,6 +102,7 @@ export const Login = ({navigation}) => {
         style={{
           flexDirection: 'row-reverse',
           marginTop: 16,
+          marginLeft: 32,
         }}>
         <Text style={{color: '#8C746A', fontSize: 12}}>Forgot Password?</Text>
       </View>

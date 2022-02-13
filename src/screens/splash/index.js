@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {
   ImageBackground,
   ScrollView,
@@ -11,6 +11,21 @@ import Img from '../../assets/image';
 export const Splash = ({navigation}) => {
   const authStatus = useSelector(state => state.authStore.authStatus);
   console.log('authStatus-splash', authStatus);
+
+  useEffect(() => {
+    timerFunction();
+  }, []);
+
+  const timerFunction = () => {
+    setTimeout(() => {
+      if (!authStatus) {
+        navigation.navigate('Dashboard');
+      } else {
+        navigation.navigate('ChooseMachine');
+      }
+    }, 3000);
+  };
+
   return (
     <ImageBackground
       source={Img.bg}
@@ -25,19 +40,12 @@ export const Splash = ({navigation}) => {
           alignItems: 'center',
           justifyContent: 'center',
         }}>
-        <TouchableOpacity
-          onPress={() => {
-            if (!authStatus) {
-              navigation.navigate('Dashboard');
-            } else {
-              navigation.navigate('ChooseMachine');
-            }
-          }}>
+        <View>
           <Image
             style={{width: 64}}
             resizeMode={'contain'}
             source={Img.logo}></Image>
-        </TouchableOpacity>
+        </View>
       </View>
     </ImageBackground>
   );
