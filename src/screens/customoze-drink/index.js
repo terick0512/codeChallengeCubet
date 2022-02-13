@@ -15,15 +15,18 @@ import {actions as authActions} from '../../store/auth-store';
 import {types} from '../../store/auth-store';
 import axios from 'axios';
 
-const {width: ScreenWidth} = Dimensions.get('screen');
+const {width} = Dimensions.get('screen');
 
-export const Customize = ({navigation}) => {
-  const [data, setData] = useState([]);
-  const authStatus = useSelector(state => state.authStore.authStatus);
-  console.log('authStatus-splash', authStatus);
+export const Customize = ({route, navigation}) => {
+  const [drink, setDrink] = useState(undefined);
+  const {id} = route.params;
+  const drinks = useSelector(state => state.authStore.drinks);
   const dispatch = useDispatch();
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  console.log('navu', id);
+
+  useEffect(() => {
+    setDrink((drinks || []).find(item => item.idDrink === id));
+  }, [drinks]);
 
   const Header = () => {
     return (
@@ -59,6 +62,15 @@ export const Customize = ({navigation}) => {
         marginTop: 32,
       }}>
       {Header()}
+      <View>
+        <Image
+          style={{width: '100%', height: width, marginTop: 32}}
+          resizeMode="contain"
+          source={{uri: drink?.strDrinkThumb}}></Image>
+      </View>
+      <View style={{alignItems: 'center', marginTop: 48}}>
+        <Text>{`drink ID :${id}`}</Text>
+      </View>
     </View>
   );
 };

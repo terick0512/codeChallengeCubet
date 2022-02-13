@@ -19,8 +19,7 @@ const {width: ScreenWidth} = Dimensions.get('screen');
 
 export const List = ({navigation}) => {
   const [data, setData] = useState([]);
-  const authStatus = useSelector(state => state.authStore.authStatus);
-  console.log('authStatus-splash', authStatus);
+  const drinks = useSelector(state => state.authStore.drinks);
   const dispatch = useDispatch();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -38,7 +37,11 @@ export const List = ({navigation}) => {
       .then(
         response => {
           console.log(JSON.stringify(response));
-          setData(response?.data?.drinks ?? []);
+          //   setData(response?.data?.drinks ?? []);
+          dispatch({
+            type: types.UPDATE_DRINKS,
+            payload: response?.data?.drinks ?? [],
+          });
         },
         error => {
           console.log(error);
@@ -82,9 +85,12 @@ export const List = ({navigation}) => {
       {Header()}
       <ScrollView>
         <View style={{flex: 1, paddingHorizontal: 32, marginTop: 32}}>
-          {data.map(item => {
+          {(drinks || []).map(item => {
             return (
-              <View
+              <TouchableOpacity
+                onPress={() => {
+                  navigation.navigate('Customize', {id: item.idDrink});
+                }}
                 key={item.idDrink}
                 style={{
                   flexDirection: 'row',
@@ -105,7 +111,7 @@ export const List = ({navigation}) => {
                     {item?.strDrink}
                   </Text>
                 </View>
-              </View>
+              </TouchableOpacity>
             );
           })}
         </View>
