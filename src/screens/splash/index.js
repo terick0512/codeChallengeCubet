@@ -1,17 +1,37 @@
-export const splash = () => {
+import React from 'react';
+import {
+  ImageBackground,
+  ScrollView,
+  View,
+  Image,
+  TouchableOpacity,
+} from 'react-native';
+import Img from '../../assets/image';
+export const Splash = ({navigation}) => {
   return (
     <ImageBackground
-      source={Img.dealBg}
+      source={Img.bg}
       style={{
         flex: 1,
-        backgroundColor: AppColors.primaryThemeColor,
+        backgroundColor: '#ffffff',
       }}
-      imageStyle={{height: hp(100), width: wp(100)}}>
-      <ScrollView
-        keyboardShouldPersistTaps={'always'}
-        style={{flex: 1}}
-        // contentContainerStyle={{ flex: 1, paddingBottom: 100 }}
-      ></ScrollView>
+      imageStyle={{height: '100%', width: '100%'}}>
+      <View
+        style={{
+          flex: 1,
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}>
+        <TouchableOpacity
+          onPress={() => {
+            navigation.navigate('Dashboard');
+          }}>
+          <Image
+            style={{width: 64}}
+            resizeMode={'contain'}
+            source={Img.logo}></Image>
+        </TouchableOpacity>
+      </View>
     </ImageBackground>
   );
 };
