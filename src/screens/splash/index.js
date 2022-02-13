@@ -6,8 +6,11 @@ import {
   Image,
   TouchableOpacity,
 } from 'react-native';
+import {useSelector} from 'react-redux';
 import Img from '../../assets/image';
 export const Splash = ({navigation}) => {
+  const authStatus = useSelector(state => state.authStore.authStatus);
+  console.log('authStatus-splash', authStatus);
   return (
     <ImageBackground
       source={Img.bg}
@@ -24,7 +27,11 @@ export const Splash = ({navigation}) => {
         }}>
         <TouchableOpacity
           onPress={() => {
-            navigation.navigate('Dashboard');
+            if (!authStatus) {
+              navigation.navigate('Dashboard');
+            } else {
+              navigation.navigate('ChooseMachine');
+            }
           }}>
           <Image
             style={{width: 64}}

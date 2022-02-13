@@ -6,6 +6,8 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {Splash} from '../screens/splash';
 import {Dashboard} from '../screens/onboard';
+import {Login} from '../screens/login';
+import {ChooseMachine} from '../screens/choose-machine';
 
 const Stack = createStackNavigator();
 
@@ -15,6 +17,8 @@ function Navigator() {
       <Stack.Navigator headerMode={'none'}>
         <Stack.Screen name="Splash" component={Splash} />
         <Stack.Screen name="Dashboard" component={Dashboard} />
+        <Stack.Screen name="Login" component={Login} />
+        <Stack.Screen name="ChooseMachine" component={ChooseMachine} />
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -1,7 +1,17 @@
 import React from 'react';
-import {ImageBackground, ScrollView, View, Image, Text} from 'react-native';
+import {
+  ImageBackground,
+  ScrollView,
+  View,
+  Image,
+  Text,
+  TouchableOpacity,
+} from 'react-native';
 import Img from '../../assets/image';
-export const Dashboard = () => {
+import {useSelector} from 'react-redux';
+export const Dashboard = ({navigation}) => {
+  const authStatus = useSelector(state => state.authStore.authStatus);
+  console.log('authStatus-splash', authStatus);
   return (
     <View
       style={{
@@ -13,15 +23,14 @@ export const Dashboard = () => {
         style={{width: '100%'}}
         resizeMode={'cover'}
         source={Img.artwork}></Image>
-      <View style={{marginTop: 32}}>
-        <Text style={{color: '#8C746A', fontSize: 44}}>Get the best</Text>
-        <Text style={{color: '#8C746A', fontSize: 44}}>coffee in town!</Text>
+      <View style={{marginTop: 48, alignItems: 'center'}}>
+        <Text style={{color: '#8C746A', fontSize: 32}}>Get the best</Text>
+        <Text style={{color: '#8C746A', fontSize: 32}}>coffee in town!</Text>
       </View>
-      <View style={{}}>
+      <View style={{marginTop: 72}}>
         <View
           style={{
             flexDirection: 'row',
-            marginTop: 48,
             justifyContent: 'space-between',
           }}>
           <View style={{}}>
@@ -30,9 +39,13 @@ export const Dashboard = () => {
               resizeMode={'contain'}
               source={Img.register}></Image>
           </View>
-          <View style={{}}>
+          <TouchableOpacity
+            style={{}}
+            onPress={() => {
+              navigation.navigate('Login');
+            }}>
             <Image style={{}} resizeMode={'contain'} source={Img.login}></Image>
-          </View>
+          </TouchableOpacity>
         </View>
         <View style={{alignItems: 'center', marginTop: 16}}>
           <Image style={{}} resizeMode={'contain'} source={Img.btn}></Image>

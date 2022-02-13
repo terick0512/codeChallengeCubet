@@ -5,5 +5,8 @@ const Img = {
   register: require('./icons/register.png'),
   login: require('./icons/login.png'),
   btn: require('./icons/btn.png'),
+  back: require('./icons/back.png'),
+  lbtn: require('./icons/lbtn.png'),
+  map: require('./icons/map.png'),
 };
 export default Img;
